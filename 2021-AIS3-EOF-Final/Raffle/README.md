@@ -33,4 +33,4 @@ go build
 Paste the output into `ans := []byte{...}`.
 
 ## Writeup
-> Writeup link will appear soon ~~~
+- [2021 AIS3 EOF FINAL - MUGYU, RAFFLE 官方解](https://artis24106.github.io/blog/posts/2021-ais3-eof-final/mugyuraffle/)
