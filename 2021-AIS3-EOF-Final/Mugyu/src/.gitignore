@@ -1,0 +1,7 @@
+*
+!.gitignore
+!main.c
+!main.c.patch
+!Makefile
+!lov3
+!cat.png

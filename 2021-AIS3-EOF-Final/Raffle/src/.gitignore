@@ -1,0 +1,6 @@
+*
+!.gitignore
+!go.mod
+!gen.py
+!main.go
+!README.md

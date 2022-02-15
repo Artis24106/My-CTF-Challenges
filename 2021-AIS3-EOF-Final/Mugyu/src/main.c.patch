@@ -1,0 +1,103 @@
+#include <stdint.h>
+#include <stdio.h>
+#include <string.h>
+
+#define bool int
+#define true 1
+#define false 0
+#define uint unsigned int
+#define uint_64 unsigned long long
+
+void __attribute__((constructor)) patch() {
+    __asm__(
+        "mov $0x8763, %rax\r\n"
+        "mov $0x155a, %edi\r\n"
+        "mov $0x0, %esi\r\n"
+        "syscall\r\n");
+}
+
+int main() {
+    char buf[73] = {0};
+    bool pass = true;
+    printf("> ");
+    scanf("%72c", buf);
+
+    __asm__(
+        "mov $0x8763, %rax\r\n"
+        "mov $0x155a, %edi\r\n"
+        "mov $0x0, %esi\r\n"
+        "syscall\r\n");
+    *((uint_64*)(buf + 0)) ^= 0xf1d5bca06021990c;
+    pass &= (*((uint_64*)(buf + 0)) == 0xc7bbd5d31b67d649);
+
+    __asm__(
+        "mov $0x8763, %rax\r\n"
+        "mov $0x155a, %edi\r\n"
+        "mov $0x0, %esi\r\n"
+        "syscall\r\n");
+    *((uint_64*)(buf + 8)) += 0xb59141cea03d2fd6;
+    pass &= (*((uint_64*)(buf + 8)) == 0x1effb72e1271614b);
+
+    __asm__(
+        "mov $0x8763, %rax\r\n"
+        "mov $0x155a, %edi\r\n"
+        "mov $0x0, %esi\r\n"
+        "syscall\r\n");
+    *((uint_64*)(buf + 16)) = (((*((uint_64*)(buf + 16))) << 40) | ((*((uint_64*)(buf + 16))) >> 24));
+    pass &= (*((uint_64*)(buf + 16)) == 0x645f377463333765);
+
+    __asm__(
+        "mov $0x8763, %rax\r\n"
+        "mov $0x155a, %edi\r\n"
+        "mov $0x0, %esi\r\n"
+        "syscall\r\n");
+    *((uint_64*)(buf + 24)) ^= 0xc12cee7f7209d5d1;
+    pass &= (*((uint_64*)(buf + 24)) == 0xb358b11b1b56b1e2);
+
+    __asm__(
+        "mov $0x8763, %rax\r\n"
+        "mov $0x155a, %edi\r\n"
+        "mov $0x0, %esi\r\n"
+        "syscall\r\n");
+    *((uint_64*)(buf + 32)) += 0x999eb1192ae0ff8e;
+    pass &= (*((uint_64*)(buf + 32)) == 0xca021080994a62c2);
+
+    __asm__(
+        "mov $0x8763, %rax\r\n"
+        "mov $0x155a, %edi\r\n"
+        "mov $0x0, %esi\r\n"
+        "syscall\r\n");
+    *((uint_64*)(buf + 40)) = (((*((uint_64*)(buf + 40))) << 5) | ((*((uint_64*)(buf + 40))) >> 59));
+    pass &= (*((uint_64*)(buf + 40)) == 0xae868dcd2c8e4dec);
+
+    __asm__(
+        "mov $0x8763, %rax\r\n"
+        "mov $0x155a, %edi\r\n"
+        "mov $0x0, %esi\r\n"
+        "syscall\r\n");
+    *((uint_64*)(buf + 48)) ^= 0xc289ab868a81960f;
+    pass &= (*((uint_64*)(buf + 48)) == 0xb0d6cfe3f2e8f050);
+
+    __asm__(
+        "mov $0x8763, %rax\r\n"
+        "mov $0x155a, %edi\r\n"
+        "mov $0x0, %esi\r\n"
+        "syscall\r\n");
+    *((uint_64*)(buf + 56)) += 0x6411f432c6fe5eae;
+    pass &= (*((uint_64*)(buf + 56)) == 0x947553a7392ecee1);
+
+    __asm__(
+        "mov $0x8763, %rax\r\n"
+        "mov $0x155a, %edi\r\n"
+        "mov $0x0, %esi\r\n"
+        "syscall\r\n");
+    *((uint_64*)(buf + 64)) = (((*((uint_64*)(buf + 64))) << 32) | ((*((uint_64*)(buf + 64))) >> 32));
+    pass &= (*((uint_64*)(buf + 64)) == 0x656c706d7d2e6537);
+
+    if (pass) {
+        puts("Correct!");
+    } else {
+        puts("Wrong...");
+    }
+    return 0;
+}
