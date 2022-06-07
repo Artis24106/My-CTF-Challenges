@@ -9,7 +9,7 @@
 ## 2022 AIS3 Pre Exam
 | Name            | Category | Keywords           | Difficulty |
 | --------------- | -------- | ------------------ | ---------- |
-| Time Management | Reverse  | QEMU user mode     | Baby       |
+| Time Management | Reverse  | Xor                | Baby       |
 | 殼              | Reverse  | Wenyan, JS, Base64 | Easy       |
-| Rideti          | Reverse  | Nim, dynamic       | Easy       |
+| Rideti          | Reverse  | Nim, Dynamic       | Easy       |
 | Wakusei         | Reverse  | Linked list, VM    | Medium     |
